@@ -86,7 +86,8 @@ public class UserRegistration {
 		Scanner input = new Scanner(System.in);
 		String password = input.nextLine();
 		
-		Pattern pattern = Pattern.compile("^(?=.*[A-Z]).{8,20}$");
+		
+		Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9]).{8,20}$");
 		Matcher match = pattern.matcher(password); 
 		boolean patternValidity = match.matches();
 			if (patternValidity == true) {
