@@ -67,6 +67,20 @@ public class UserRegistration {
 				System.out.println("Entred Mobile Number is Invalid");
 			}
 	}
+	public static void Password() {
+		System.out.println("Enter password it should have atleast one Uppercase, one digit and one special character");
+		Scanner input = new Scanner(System.in);
+		String password = input.nextLine();
+		Pattern pattern = Pattern.compile("^.{8,20}$");
+		Matcher match = pattern.matcher(password); 
+		boolean patternValidity = match.matches();
+			if (patternValidity == true) {
+				System.out.println("Entred password is Valid");	
+			}
+			else {
+				System.out.println("Entred passowrd is Invalid");
+			}
+	}
 	public static void main(String args[]) {
 		firstName();
 		lastName();
