@@ -20,8 +20,23 @@ public class UserRegistration {
 			System.out.println("first name is Invalid");
 		}
 	}
+	public static void lastName() {
+		System.out.println("Enter first Name");
+		Scanner input = new Scanner(System.in);
+		String entry = input.nextLine();
+		Pattern pattern = Pattern.compile("[A-Z][a-z]{2}[a-z]*");
+		Matcher match = pattern.matcher(entry); 
+		boolean patternValidity = match.matches();
+		if (patternValidity == true) {
+			System.out.println(" first name is Valid");	
+		}
+		else {
+			System.out.println("first name is Invalid");
+		}
+	}
 		
 	public static void main(String args[]) {
 		firstName();
+		lastName();
 		}
 }
