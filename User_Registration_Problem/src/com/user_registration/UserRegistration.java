@@ -21,22 +21,39 @@ public class UserRegistration {
 		}
 	}
 	public static void lastName() {
-		System.out.println("Enter first Name");
+		
+		System.out.println("Enter last Name");
 		Scanner input = new Scanner(System.in);
 		String entry = input.nextLine();
 		Pattern pattern = Pattern.compile("[A-Z][a-z]{2}[a-z]*");
 		Matcher match = pattern.matcher(entry); 
 		boolean patternValidity = match.matches();
 		if (patternValidity == true) {
-			System.out.println(" first name is Valid");	
+		
+			System.out.println(" last name is Valid");	
 		}
 		else {
-			System.out.println("first name is Invalid");
+	
+			System.out.println("last name is Invalid");
 		}
 	}
-		
+	public static void email() {
+		System.out.println("Enter your Email");
+		Scanner input = new Scanner(System.in);
+		String email = input.nextLine();
+		Pattern pattern = Pattern.compile("^[A-Za-z0-9_][A-Za-z0-9_.]*[@]{1}[a-z]+[.][a-z]{2,6}$");
+		Matcher match = pattern.matcher(email); 
+		boolean patternValidity = match.matches();
+			if (patternValidity == true) {
+				System.out.println("your Entry is Valid");	
+			}
+			else {
+				System.out.println("Your Entry is Invalid");
+			}
+	}
 	public static void main(String args[]) {
 		firstName();
 		lastName();
+		email();
 		}
 }
