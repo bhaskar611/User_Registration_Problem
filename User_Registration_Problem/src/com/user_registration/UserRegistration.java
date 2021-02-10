@@ -45,15 +45,32 @@ public class UserRegistration {
 		Matcher match = pattern.matcher(email); 
 		boolean patternValidity = match.matches();
 			if (patternValidity == true) {
-				System.out.println("your Entry is Valid");	
+				
+				System.out.println("your Email is Valid");
 			}
 			else {
-				System.out.println("Your Entry is Invalid");
+				
+				System.out.println("Your Email is Invalid");
+			}
+	}
+	public static void mobileNumber() {
+		System.out.println("Enter Valid Mobile Number");
+		Scanner input = new Scanner(System.in);
+		String mobileNumber = input.nextLine();
+		Pattern pattern = Pattern.compile("^[1-9]{2}[ ]{1}[1-9]{1}[0-9]{9}$");
+		Matcher match = pattern.matcher(mobileNumber); 
+		boolean patternValidity = match.matches();
+			if (patternValidity == true) {
+				System.out.println("Entred Mobile Number is Valid");	
+			}
+			else {
+				System.out.println("Entred Mobile Number is Invalid");
 			}
 	}
 	public static void main(String args[]) {
 		firstName();
 		lastName();
 		email();
+		mobileNumber();
 		}
 }
