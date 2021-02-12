@@ -92,8 +92,20 @@ public class UserRegistration {
 			System.out.println("sad");
 		}
 		return patternValidity;	
-}		
+		
+}	
+		public String multipleEmailValidation(String name) {
+	        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
+	        if (Pattern.matches(regex, name)) {
+	            System.out.println("Happy");
+	            return "Happy";
+	        } else {
+	            System.out.println("Sad");
+	            return "Sad";
+	        }
+	    }
 	public static void main(String args[]) {
+		
 		firstName();
 		lastName();
 		email();
