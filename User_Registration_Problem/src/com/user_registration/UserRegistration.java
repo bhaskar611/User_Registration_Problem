@@ -6,50 +6,40 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 	
-	public static void firstName() {
-		while(true)
-	{
+	
+		public static boolean firstName() {	
 		System.out.println("Enter first Name");
 		Scanner input = new Scanner(System.in);
 		String entry = input.nextLine();
 		Pattern pattern = Pattern.compile("[A-Z][a-z]{2}[a-z]*");
 		Matcher match = pattern.matcher(entry); 
 		boolean patternValidity = match.matches();
-		if (patternValidity == true) {
-			System.out.println(" first name is Valid");	
-			break;
+		if(patternValidity == true) {
+			System.out.println("happy");
 		}
 		else {
-			
-			System.out.println("please enter a valid first name");
-			
+			System.out.println("sad");
 		}
-	}
+		return patternValidity;	
 }		
-	public static void lastName() {
-		while(true)
-	{		
+	
+		public static boolean lastName() {		
 		System.out.println("Enter last Name");
 		Scanner input = new Scanner(System.in);
 		String entry = input.nextLine();
 		Pattern pattern = Pattern.compile("[A-Z][a-z]{2}[a-z]*");
 		Matcher match = pattern.matcher(entry); 
 		boolean patternValidity = match.matches();
-		if (patternValidity == true) {
-		
-			System.out.println(" last name is Valid");	
-			break;
+		if(patternValidity == true) {
+			System.out.println("happy");
 		}
 		else {
-	
-			
-			System.out.println("please enter a valid last name");
+			System.out.println("sad");
 		}
-	}
+		return patternValidity;	
 }		
-	public static void email() {
-		while(true)
-	{		
+	
+		public static boolean email() {
 		System.out.println("Enter your Email");
 		Scanner input = new Scanner(System.in);
 		String email = input.nextLine();
@@ -59,43 +49,34 @@ public class UserRegistration {
 		                                   
 		Matcher match = pattern.matcher(email); 
 		boolean patternValidity = match.matches();
-			if (patternValidity == true) {
-				
-				System.out.println("your Email is Valid");
-				break;
-			}
-			else {
-				
-				
-				System.out.println("please enter a valid email id");
-			}
-	}
+		if(patternValidity == true) {
+			System.out.println("happy");
+		}
+		else {
+			System.out.println("sad");
+		}
+		return patternValidity;		
 		
 }
-	public static void mobileNumber() {
-		while(true)
-	{		
+	
+		public static boolean mobileNumber() {		
 		System.out.println("Enter Valid Mobile Number");
 		Scanner input = new Scanner(System.in);
 		String mobileNumber = input.nextLine();
 		Pattern pattern = Pattern.compile("^[1-9]{2}[ ]{1}[1-9]{1}[0-9]{9}$");
 		Matcher match = pattern.matcher(mobileNumber); 
 		boolean patternValidity = match.matches();
-			if (patternValidity == true) {
-				System.out.println("Entred Mobile Number is Valid");
-				break;
-			}
-			else {
-				
-				System.out.println("please enter a valid mobile number");
-			}
-			
-	}
+		if(patternValidity == true) {
+			System.out.println("happy");
+		}
+		else {
+			System.out.println("sad");
+		}
+		return patternValidity;	
 }		
 	
-	public static void validatePassword() {
-		while(true)
-	{		
+	
+		public static boolean validatePassword() {	
 		System.out.println("Enter password it should have atleast one Uppercase, one digit and one special character");
 		Scanner input = new Scanner(System.in);
 		String password = input.nextLine();
@@ -104,15 +85,13 @@ public class UserRegistration {
 		Pattern pattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}");
 		Matcher match = pattern.matcher(password); 
 		boolean patternValidity = match.matches();
-			if (patternValidity == true) {
-				System.out.println("Entred password is Valid");	
-				break;
-			}
-			else {
-			
-				System.out.println("please enter a valid password");
-			}
-	}
+		if(patternValidity == true) {
+			System.out.println("happy");
+		}
+		else {
+			System.out.println("sad");
+		}
+		return patternValidity;	
 }		
 	public static void main(String args[]) {
 		firstName();
