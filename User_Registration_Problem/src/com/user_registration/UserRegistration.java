@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class UserRegistration {
 	
 	
-		public static boolean firstName() {	
+		public static boolean firstName() throws UserRegistrationException {	
 		System.out.println("Enter first Name");
 		Scanner input = new Scanner(System.in);
 		String entry = input.nextLine();
@@ -16,14 +16,16 @@ public class UserRegistration {
 		boolean patternValidity = match.matches();
 		if(patternValidity == true) {
 			System.out.println("happy");
+			return patternValidity;
 		}
 		else {
-			System.out.println("sad");
+			throw new UserRegistrationException("Please enter a Valid First Name");
+			
 		}
-		return patternValidity;	
+		
 }		
 	
-		public static boolean lastName() {		
+		public static boolean lastName() throws UserRegistrationException {		
 		System.out.println("Enter last Name");
 		Scanner input = new Scanner(System.in);
 		String entry = input.nextLine();
@@ -32,14 +34,15 @@ public class UserRegistration {
 		boolean patternValidity = match.matches();
 		if(patternValidity == true) {
 			System.out.println("happy");
+			return patternValidity;
 		}
 		else {
-			System.out.println("sad");
-		}
-		return patternValidity;	
+			throw new UserRegistrationException("Please enter a Valid First Name");
+			
+		}	
 }		
 	
-		public static boolean email() {
+		public static boolean email() throws UserRegistrationException{
 		System.out.println("Enter your Email");
 		Scanner input = new Scanner(System.in);
 		String email = input.nextLine();
@@ -51,15 +54,16 @@ public class UserRegistration {
 		boolean patternValidity = match.matches();
 		if(patternValidity == true) {
 			System.out.println("happy");
+			return patternValidity;
 		}
 		else {
-			System.out.println("sad");
-		}
-		return patternValidity;		
+			throw new UserRegistrationException("Please enter a Valid Email");
+			
+		}	
 		
 }
 	
-		public static boolean mobileNumber() {		
+		public static boolean mobileNumber() throws UserRegistrationException{		
 		System.out.println("Enter Valid Mobile Number");
 		Scanner input = new Scanner(System.in);
 		String mobileNumber = input.nextLine();
@@ -68,15 +72,16 @@ public class UserRegistration {
 		boolean patternValidity = match.matches();
 		if(patternValidity == true) {
 			System.out.println("happy");
+			return patternValidity;
 		}
 		else {
-			System.out.println("sad");
+			throw new UserRegistrationException("Please enter a Valid Mobile Number");
+			
 		}
-		return patternValidity;	
 }		
 	
 	
-		public static boolean validatePassword() {	
+		public static boolean validatePassword() throws UserRegistrationException {	
 		System.out.println("Enter password it should have atleast one Uppercase, one digit and one special character");
 		Scanner input = new Scanner(System.in);
 		String password = input.nextLine();
@@ -87,24 +92,16 @@ public class UserRegistration {
 		boolean patternValidity = match.matches();
 		if(patternValidity == true) {
 			System.out.println("happy");
+			return patternValidity;
 		}
 		else {
-			System.out.println("sad");
+			throw new UserRegistrationException("Please enter a Valid Password");
+			
 		}
-		return patternValidity;	
 		
 }	
-		public String multipleEmailValidation(String name) {
-	        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
-	        if (Pattern.matches(regex, name)) {
-	            System.out.println("Happy");
-	            return "Happy";
-	        } else {
-	            System.out.println("Sad");
-	            return "Sad";
-	        }
-	    }
-	public static void main(String args[]) {
+		
+	public static void main(String args[]) throws UserRegistrationException {
 		
 		firstName();
 		lastName();
