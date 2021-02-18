@@ -3,110 +3,76 @@ package com.user_registration;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+@FunctionalInterface
+interface checkIfValidate {
+    public boolean checkIfValidate(String input)throws UserRegistrationException;
+}
 public class UserRegistration {
 	
 	
-		public static boolean firstName() throws UserRegistrationException {	
-		System.out.println("Enter first Name");
-		Scanner input = new Scanner(System.in);
-		String entry = input.nextLine();
-		Pattern pattern = Pattern.compile("[A-Z][a-z]{2}[a-z]*");
-		Matcher match = pattern.matcher(entry); 
-		boolean patternValidity = match.matches();
-		if(patternValidity == true) {
-			System.out.println("happy");
-			return patternValidity;
+	public void IsEmptyorNullString(String input) throws UserRegistrationException {
+		try {
+			if (input.length() == 0) {
+				throw new UserRegistrationException( UserRegistrationException.ExceptionType.GIVEN_EMPTY, " Empty input not Allowed please Enter again");
+			}
 		}
-		else {
-			throw new UserRegistrationException("Please enter a Valid First Name");
-			
+		catch(NullPointerException e)
+		{
+			throw new UserRegistrationException( UserRegistrationException.ExceptionType.GIVEN_NULL, "Null not allowed please Enter again ");
+
 		}
-		
-}		
-	
-		public static boolean lastName() throws UserRegistrationException {		
-		System.out.println("Enter last Name");
-		Scanner input = new Scanner(System.in);
-		String entry = input.nextLine();
-		Pattern pattern = Pattern.compile("[A-Z][a-z]{2}[a-z]*");
-		Matcher match = pattern.matcher(entry); 
-		boolean patternValidity = match.matches();
-		if(patternValidity == true) {
-			System.out.println("happy");
-			return patternValidity;
+	}
+
+	checkIfValidate validateFirstName = (String firstName)-> {
+		IsEmptyorNullString(firstName);
+		boolean  matcher = firstName.matches("([A-Z][a-z]{2,})");
+		if(matcher == true) {
+			return matcher;
+		} 
+		return matcher;
+	};
+
+	checkIfValidate validateLastName = (String lastName) -> {
+		IsEmptyorNullString(lastName);
+		boolean matcher = lastName.matches("([A-Z][a-z]{2,})");
+		if(matcher == true) {
+			return matcher;
 		}
-		else {
-			throw new UserRegistrationException("Please enter a Valid First Name");
-			
-		}	
-}		
-	
-		public static boolean email() throws UserRegistrationException{
-		System.out.println("Enter your Email");
-		Scanner input = new Scanner(System.in);
-		String email = input.nextLine();
-		
-		
-		Pattern pattern = Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$");
-		                                   
-		Matcher match = pattern.matcher(email); 
-		boolean patternValidity = match.matches();
-		if(patternValidity == true) {
-			System.out.println("happy");
-			return patternValidity;
+		return matcher;
+
+	};
+
+	checkIfValidate validateEmail = (String email) -> {
+		IsEmptyorNullString(email);
+		boolean matcher = email.matches( "^[a-zA-Z]+([._+-]{0,1}[a-zA-Z0-9]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}+(?:\\.[a-z]{2,}){0,1}$");
+		if(matcher == true) {
+			return matcher;
 		}
-		else {
-			throw new UserRegistrationException("Please enter a Valid Email");
-			
-		}	
+		else 
+			return matcher;
+	};
+
+	checkIfValidate validateMobileNumber = (String phoneNumber) -> {
+		IsEmptyorNullString(phoneNumber);
+		boolean matcher = phoneNumber.matches("^[1-9]{2}[ ]{1}[1-9]{1}[0-9]{9}$");
 		
-}
-	
-		public static boolean mobileNumber() throws UserRegistrationException{		
-		System.out.println("Enter Valid Mobile Number");
-		Scanner input = new Scanner(System.in);
-		String mobileNumber = input.nextLine();
-		Pattern pattern = Pattern.compile("^[1-9]{2}[ ]{1}[1-9]{1}[0-9]{9}$");
-		Matcher match = pattern.matcher(mobileNumber); 
-		boolean patternValidity = match.matches();
-		if(patternValidity == true) {
-			System.out.println("happy");
-			return patternValidity;
+		if(matcher == true) {
+			System.out.println("Valid Mobile Number");
+			return matcher;
 		}
-		else {
-			throw new UserRegistrationException("Please enter a Valid Mobile Number");
-			
+		return matcher;
+		
+	};
+
+	checkIfValidate validatePassword = (String password) -> {
+		IsEmptyorNullString(password);
+		boolean matcher = password.matches("(^(?=.*[A-Z]))(?=.*[0-9])(?=.*[a-z])(?=.*[@*&^%#-*+!]{1}).{8,}$");
+
+		if(matcher == true) {
+			System.out.println("Valid Password");
+			return matcher;
 		}
-}		
-	
-	
-		public static boolean validatePassword() throws UserRegistrationException {	
-		System.out.println("Enter password it should have atleast one Uppercase, one digit and one special character");
-		Scanner input = new Scanner(System.in);
-		String password = input.nextLine();
-		
-		
-		Pattern pattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}");
-		Matcher match = pattern.matcher(password); 
-		boolean patternValidity = match.matches();
-		if(patternValidity == true) {
-			System.out.println("happy");
-			return patternValidity;
-		}
-		else {
-			throw new UserRegistrationException("Please enter a Valid Password");
-			
-		}
-		
-}	
-		
-	public static void main(String args[]) throws UserRegistrationException {
-		
-		firstName();
-		lastName();
-		email();
-		mobileNumber();
-		validatePassword();
-		}
+		return matcher;
+
+	};
 }
